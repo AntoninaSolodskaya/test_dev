@@ -39,6 +39,7 @@ export default function ButtonAppBar() {
           </Typography>
           <Link to="/">Home</Link>
           <Link to="/table">Table</Link>
+          <Link to="/test">Test</Link>
         </Toolbar>
       </AppBar>
     </div>
