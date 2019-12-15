@@ -1,64 +1,44 @@
 import React from "react";
+import { useStyles } from "./styles";
 
-const Table = () => {
-  const data = [
-    {
-      category: "Sporting Goods",
-      price: "$49.99",
-      stocked: true,
-      name: "Football"
-    },
-    {
-      category: "Sporting Goods",
-      price: "$9.99",
-      stocked: true,
-      name: "Baseball"
-    },
-    {
-      category: "Sporting Goods",
-      price: "$29.99",
-      stocked: false,
-      name: "Basketball"
-    },
-    {
-      category: "Electronics",
-      price: "$99.99",
-      stocked: true,
-      name: "iPod Touch"
-    },
-    {
-      category: "Electronics",
-      price: "$399.99",
-      stocked: false,
-      name: "iPhone 5"
-    },
-    {
-      category: "Electronics",
-      price: "$199.99",
-      stocked: true,
-      name: "Nexus 7"
-    }
-  ];
+const arr1 = [
+  { name: "Mike", age: "86", weight: "126" },
+  { name: "Jim", age: "45", weight: "34" },
+  { name: "Sam", age: "9", weight: "85" }
+];
 
-  let tableTemplate;
+const arr2 = [
+  { item: "table", color: "red", width: "444", height: "12" },
+  { item: "sofa", color: "black", width: "355554", height: "344" },
+  { item: "door", color: "white", width: "666", height: "4534" },
+  { item: "window", color: "gray", width: "777", height: "435345" },
+  { item: "floor", color: "yellow", width: "888", height: "45345" }
+];
 
-  const makeColumns = row => {
-    return (
-      <td>
-        {row.category} {row.price} {row.name}
-      </td>
-    );
-  };
+const arr = arr1;
 
-  tableTemplate = data.map((row, i) => {
-    return <tr key={i}>{makeColumns(row)}</tr>;
-  });
-
+export const Table = () => {
+  const classes = useStyles();
   return (
-    <table>
-      <tbody>{tableTemplate}</tbody>
-    </table>
+    <div className={classes.root}>
+      <table>
+        <thead>
+          <tr>
+            {Object.keys(arr[0]).map(key => (
+              <td>{key}</td>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {arr.map(obj => (
+            <tr>
+              {Object.values(obj).map(val => (
+                <td>{val}</td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 };
-
-export default Table;

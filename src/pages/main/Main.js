@@ -1,12 +1,8 @@
 import React from "react";
+
 import { makeStyles } from "@material-ui/core/styles";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
+
 import Paper from "@material-ui/core/Paper";
-import PropTypes from "prop-types";
 
 const useStyles = makeStyles({
   root: {
@@ -18,62 +14,10 @@ const useStyles = makeStyles({
   }
 });
 
-function createData(name, price, fat, carbs, protein) {
-  return { name, price, fat, carbs, protein };
-}
-
-const rows = [
-  createData("Sporting Goods", "$49.99", "Football", 24, 4.0),
-  createData("Ice cream sandwich", "$237", "Electronics", 24, 4.3),
-  createData("Eclair", "$16.0", "Electronics", 24, 6.0),
-  createData("Cupcake", "$305", "Football", 67, 4.3),
-  createData("Gingerbread", "$356", "Electronics", 49, 3.9)
-];
-
-const Main = ({ name, price }) => {
+const Main = () => {
   const classes = useStyles();
 
-  return (
-    <Paper className={classes.root}>
-      <Table className={classes.table} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell>Dessert (100g serving)</TableCell>
-            <TableCell align="right">Price</TableCell>
-            <TableCell align="right">Fat&nbsp;(g)</TableCell>
-            <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-            <TableCell align="right">Protein&nbsp;(g)</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map(row => (
-            <TableRow key={row.name}>
-              <TableCell component="th" scope="row">
-                {name}
-              </TableCell>
-              <TableCell align="right">{price}</TableCell>
-              <TableCell align="right">{row.fat}</TableCell>
-              <TableCell align="right">{row.carbs}</TableCell>
-              <TableCell align="right">{row.protein}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </Paper>
-  );
-};
-
-Main.propTypes = {
-  name: PropTypes.string,
-  price: PropTypes.string,
-  fat: PropTypes.string,
-  carbs: PropTypes.number,
-  protein: PropTypes.number
-};
-
-Main.defaultProps = {
-  name: "name",
-  price: "deepblue"
+  return <Paper className={classes.root} />;
 };
 
 export default Main;
