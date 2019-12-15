@@ -1,5 +1,5 @@
 import React from "react";
-import { useStyles } from "./styles";
+import "./styles.css";
 
 const arr1 = [
   { name: "Mike", age: "86", weight: "126" },
@@ -15,15 +15,14 @@ const arr2 = [
   { item: "floor", color: "yellow", width: "888", height: "45345" }
 ];
 
-const arr = arr1;
+const arr = arr2;
 
-export const Table = () => {
-  const classes = useStyles();
+const Table = () => {
   return (
-    <div className={classes.root}>
-      <table>
-        <thead>
-          <tr>
+    <div className="root">
+      <table className="table">
+        <thead className="thead">
+          <tr className="table">
             {Object.keys(arr[0]).map(key => (
               <td>{key}</td>
             ))}
@@ -33,7 +32,7 @@ export const Table = () => {
           {arr.map(obj => (
             <tr>
               {Object.values(obj).map(val => (
-                <td>{val}</td>
+                <td className="table">{val}</td>
               ))}
             </tr>
           ))}
@@ -42,3 +41,5 @@ export const Table = () => {
     </div>
   );
 };
+
+export default Table;

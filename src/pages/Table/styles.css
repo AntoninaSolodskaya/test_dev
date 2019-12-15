@@ -1,0 +1,15 @@
+.root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Helvetica Neue;
+}
+.table {
+  border: 1px solid black;
+}
+.thead {
+  text-transform: capitalize;
+}
+.td {
+  padding: 10px;
+}

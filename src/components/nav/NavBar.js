@@ -40,6 +40,8 @@ export default function ButtonAppBar() {
           <Link to="/">Home</Link>
           <Link to="/table">Table</Link>
           <Link to="/test">Test</Link>
+          <Link to="/menu">Menu</Link>
+          <Link to="/todo">Todo</Link>
         </Toolbar>
       </AppBar>
     </div>

@@ -27,7 +27,7 @@ const TestComponent = () => {
   );
 };
 
-// export default TestComponent;
+export default TestComponent;
 // import React from "react";
 // import { makeStyles } from "@material-ui/core/styles";
 // import Table from "@material-ui/core/Table";
