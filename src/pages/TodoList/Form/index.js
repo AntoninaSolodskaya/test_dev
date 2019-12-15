@@ -1,4 +1,5 @@
 import { reduxForm } from "redux-form";
+import { connect } from "react-redux";
 
 import { Form } from "./Form";
 
@@ -19,7 +20,4 @@ const validate = values => {
   return errors;
 };
 
-export default reduxForm({
-  form: "addList",
-  validate
-})(Form);
+export default reduxForm({ form: "addList", validate })(Form);

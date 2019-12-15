@@ -1,7 +1,16 @@
-import { withStyles } from "@material-ui/core/styles";
+import { connect } from "react-redux";
+
+import { addTodo, removeTodo } from "./Form/actions";
 
 import { TodoList } from "./TodoList";
 
-import { styles } from "./styles";
+const mapState = state => ({
+  list: state.list
+});
 
-export default withStyles(styles)(TodoList);
+const actions = { addTodo, removeTodo };
+
+export default connect(
+  mapState,
+  actions
+)(TodoList);

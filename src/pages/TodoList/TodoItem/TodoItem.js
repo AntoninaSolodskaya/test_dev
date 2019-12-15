@@ -7,19 +7,16 @@ import SimpleMenu from "../../SimpleMenu";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 
-export const TodoItem = () => {
+export const TodoItem = ({ item, removeTodo }) => {
   const classes = styles();
 
   return (
     <Paper className={classes.root} elevation={6}>
       <Typography variant="h5" component="h3">
-        This is a sheet of paper.
+        {item.title}
       </Typography>
-      <Typography component="p">
-        Paper can be used to build surface or other elements for your
-        application.
-      </Typography>
-      <SimpleMenu />
+      <Typography component="p">{item.description}</Typography>
+      <SimpleMenu removeTodo={removeTodo} />
     </Paper>
   );
 };

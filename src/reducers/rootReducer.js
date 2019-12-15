@@ -1,10 +1,10 @@
 import { combineReducers } from "redux";
 import { reducer as formReducer } from "redux-form";
-import reducer from "../pages/TodoList/reducer/reducer";
+import todoReducer from "../pages/TodoList/Form/todoReducer";
 
 const rootReducer = combineReducers({
   form: formReducer,
-  list: reducer
+  list: todoReducer
 });
 
 export default rootReducer;

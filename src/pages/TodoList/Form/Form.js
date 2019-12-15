@@ -7,7 +7,7 @@ import Button from "@material-ui/core/Button";
 
 import CustomTextField from "../../../@common/fields/CustomTextField";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles({
   form: {
     display: "flex",
     justifyContent: "center",
@@ -19,12 +19,13 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
     marginTop: "20px"
   }
-}));
+});
 
-export const Form = ({ handleSubmit, pristine, reset, submitting }) => {
+export const Form = ({ handleSubmit, pristine, submitting, addTodo }) => {
   const classes = useStyles();
+
   return (
-    <form onSubmit={handleSubmit} className={classes.form}>
+    <form onSubmit={handleSubmit(addTodo)} className={classes.form}>
       <Field name="title" component={CustomTextField} label="Title" />
 
       <Field
