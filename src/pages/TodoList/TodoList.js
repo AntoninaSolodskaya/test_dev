@@ -5,14 +5,24 @@ import Container from "@material-ui/core/Container";
 import TodoItem from "./TodoItem";
 import Form from "./Form";
 
-export const TodoList = ({ list, addTodo, removeTodo }) => {
+export const TodoList = ({
+  todos,
+  createNewItemAction,
+  deleteItemAction,
+  copyItemAction
+}) => {
   return (
     <Container maxWidth="sm">
-      {list &&
-        list.map((item, i) => (
-          <TodoItem item={item} removeTodo={removeTodo} key={i} />
+      {todos &&
+        todos.map((item, i) => (
+          <TodoItem
+            {...item}
+            key={i}
+            deleteItemAction={deleteItemAction}
+            copyItemAction={copyItemAction}
+          />
         ))}
-      <Form addTodo={addTodo} />
+      <Form createNewItemAction={createNewItemAction} />
     </Container>
   );
 };

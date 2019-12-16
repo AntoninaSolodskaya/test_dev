@@ -1,14 +1,24 @@
 import { connect } from "react-redux";
 
-import { addTodo, removeTodo } from "./Form/actions";
+import {
+  createNewItemAction,
+  deleteItemAction,
+  copyItemAction,
+  updateItemAction
+} from "../../@store/TodoList";
 
 import { TodoList } from "./TodoList";
 
 const mapState = state => ({
-  list: state.list
+  todos: state.todoList.list
 });
 
-const actions = { addTodo, removeTodo };
+const actions = {
+  createNewItemAction,
+  deleteItemAction,
+  copyItemAction,
+  updateItemAction
+};
 
 export default connect(
   mapState,

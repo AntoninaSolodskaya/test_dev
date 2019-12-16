@@ -1,7 +1,8 @@
-import { reduxForm } from "redux-form";
-import { connect } from "react-redux";
+import { reduxForm, reset } from "redux-form";
 
 import { Form } from "./Form";
+
+const afterSubmit = (result, dispatch) => dispatch(reset("addList"));
 
 const validate = values => {
   const errors = {};
@@ -20,4 +21,8 @@ const validate = values => {
   return errors;
 };
 
-export default reduxForm({ form: "addList", validate })(Form);
+export default reduxForm({
+  form: "addList",
+  validate,
+  onSubmitSuccess: afterSubmit
+})(Form);

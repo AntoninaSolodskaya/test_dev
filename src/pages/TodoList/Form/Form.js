@@ -21,11 +21,16 @@ const useStyles = makeStyles({
   }
 });
 
-export const Form = ({ handleSubmit, pristine, submitting, addTodo }) => {
+export const Form = ({
+  handleSubmit,
+  pristine,
+  submitting,
+  createNewItemAction
+}) => {
   const classes = useStyles();
 
   return (
-    <form onSubmit={handleSubmit(addTodo)} className={classes.form}>
+    <form onSubmit={handleSubmit(createNewItemAction)} className={classes.form}>
       <Field name="title" component={CustomTextField} label="Title" />
 
       <Field

@@ -1,48 +1,50 @@
 import React, { useCallback } from "react";
 
-import PropTypes from "prop-types";
+import * as PropTypes from "prop-types";
 
-import Button from "@material-ui/core/Button";
+import AcUnitIcon from "@material-ui/icons/AcUnit";
+import IconButton from "@material-ui/core/IconButton";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 
-const items = [
-  { title: "delete", value: "Delete", id: 1 },
-  { title: "copy", value: "Copy", id: 2 }
-];
-
-export const SimpleMenu = ({ removeTodo, getLabel, getValue }) => {
+export const SimpleMenu = ({ items, onClick, Icon, getLabel, getValue }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
-  const handleClick = event => {
-    setAnchorEl(event.currentTarget);
-  };
+  const handleOpen = useCallback(
+    event => {
+      setAnchorEl(event.currentTarget);
+    },
+    [setAnchorEl]
+  );
 
-  const handleCloseMenu = () => {
+  const handleClose = () => {
     setAnchorEl(null);
   };
 
+  const handleClick = useCallback(
+    value => () => {
+      onClick(value);
+      setAnchorEl(null);
+    },
+    [onClick, setAnchorEl]
+  );
+
   return (
     <div>
-      <Button
-        aria-controls="simple-menu"
-        aria-haspopup="true"
-        onClick={handleClick}
-      >
-        Open Menu
-      </Button>
+      <IconButton onClick={handleOpen}>
+        <AcUnitIcon />*{Icon ? <Icon /> : ""}
+      </IconButton>
       <Menu
         id="simple-menu"
         anchorEl={anchorEl}
         keepMounted
         open={Boolean(anchorEl)}
-        onClose={handleCloseMenu}
+        onClose={handleClose}
       >
         {items &&
           items.map((item, i) => (
-            <MenuItem onClick={handleCloseMenu} key={i}>
-              {getValue(item)}
-              {console.log(item)}
+            <MenuItem onClick={handleClick(getValue(item))} key={i}>
+              {getLabel(item)}
             </MenuItem>
           ))}
       </Menu>
@@ -51,11 +53,13 @@ export const SimpleMenu = ({ removeTodo, getLabel, getValue }) => {
 };
 
 SimpleMenu.propTypes = {
+  items: PropTypes.array,
   getLabel: PropTypes.func,
   getValue: PropTypes.func
 };
 
 SimpleMenu.defaultProps = {
+  items: [],
   getLabel: title => title.label,
   getValue: title => title.value
 };

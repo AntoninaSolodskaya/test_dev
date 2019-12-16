@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 
 import { Route, Switch } from "react-router-dom";
 
-import NavBar from "./components/nav/NavBar";
+import NavBar from "./components/NavBar/NavBar";
 import Main from "./pages/Main/Main";
 import Table from "./pages/Table/Table";
 import SimpleMenu from "./pages/SimpleMenu";
