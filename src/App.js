@@ -7,7 +7,7 @@ import Main from "./pages/Main/Main";
 import Table from "./pages/Table/Table";
 import SimpleMenu from "./pages/SimpleMenu";
 import TodoList from "./pages/TodoList";
-import TestComponent from "./pages/test/TestComponent";
+import Form from "./pages/TodoList/Form";
 
 const App = () => (
   <Fragment>
@@ -17,7 +17,8 @@ const App = () => (
       <Route path="/table" component={Table} />
       <Route path="/menu" component={SimpleMenu} />
       <Route path="/todo" component={TodoList} />
-      <Route path="/test" component={TestComponent} />
+      <Route path="/form" component={Form} />
+      <Route path="/form/:id" component={Form} />
     </Switch>
   </Fragment>
 );

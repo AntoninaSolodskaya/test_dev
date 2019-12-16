@@ -1,5 +1,6 @@
 import React from "react";
 
+import { Redirect } from "react-router-dom";
 import * as PropTypes from "prop-types";
 
 import { styles } from "./styles";
@@ -11,7 +12,8 @@ import Typography from "@material-ui/core/Typography";
 
 const items = [
   { label: "delete", value: "Delete" },
-  { label: "copy", value: "Copy" }
+  { label: "copy", value: "Copy" },
+  { label: "update", value: "Update" }
 ];
 
 export const TodoItem = ({
@@ -30,6 +32,10 @@ export const TodoItem = ({
     }
     if (event === "Copy") {
       copyItemAction(id);
+    }
+    if (event === "Update") {
+      return <Redirect from="/todo" to={`/form/${id}`} />;
+      // to={`/manage/${id}`}
     }
   };
 

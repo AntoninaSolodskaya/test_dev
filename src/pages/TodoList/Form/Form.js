@@ -4,6 +4,7 @@ import { Field } from "redux-form";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
+import Container from "@material-ui/core/Container";
 
 import CustomTextField from "../../../@common/fields/CustomTextField";
 
@@ -25,29 +26,43 @@ export const Form = ({
   handleSubmit,
   pristine,
   submitting,
-  createNewItemAction
+  createNewItemAction,
+  updateItemAction,
+  initialValues
 }) => {
   const classes = useStyles();
 
-  return (
-    <form onSubmit={handleSubmit(createNewItemAction)} className={classes.form}>
-      <Field name="title" component={CustomTextField} label="Title" />
+  const submit = values => {
+    // console.log(initialValues)
+    if (initialValues.id) {
+      updateItemAction(values);
+      // history.goBack();
+    } else {
+      createNewItemAction(values);
+    }
+  };
 
-      <Field
-        name="description"
-        component={CustomTextField}
-        label="Description"
-      />
-      <div className={classes.btn}>
-        <Button
-          type="submit"
-          disabled={pristine || submitting}
-          variant="contained"
-          color="primary"
-        >
-          Add Todo
-        </Button>
-      </div>
-    </form>
+  return (
+    <Container maxWidth="sm">
+      <form onSubmit={handleSubmit(submit)} className={classes.form}>
+        <Field name="title" component={CustomTextField} label="Title" />
+
+        <Field
+          name="description"
+          component={CustomTextField}
+          label="Description"
+        />
+        <div className={classes.btn}>
+          <Button
+            type="submit"
+            disabled={pristine || submitting}
+            variant="contained"
+            color="primary"
+          >
+            Submit
+          </Button>
+        </div>
+      </form>
+    </Container>
   );
 };

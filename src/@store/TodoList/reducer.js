@@ -21,15 +21,20 @@ const createNewItemHandler = (state, { payload }) => {
   };
 };
 
+// return [
+//   ...state.filter(contact => contact.id !== payload.contact.id),
+//   Object.assign({}, payload.contact)
+// ]
 const updateItemHandler = (state, { payload }) => {
   return {
     ...state,
     list: [
-      ...state.list,
-      {
-        // ...payload.id,
-        // payload
-      }
+      ...state.list.filter(item => item.id !== payload.item.id),
+      payload
+      // {
+      //   ...payload.id,
+      //   payload
+      // }
     ]
   };
 };

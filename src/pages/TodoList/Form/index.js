@@ -1,6 +1,11 @@
 import { reduxForm, reset } from "redux-form";
+import { connect } from "react-redux";
 
 import { Form } from "./Form";
+import {
+  createNewItemAction,
+  updateItemAction
+} from "../../../@store/TodoList";
 
 const afterSubmit = (result, dispatch) => dispatch(reset("addList"));
 
@@ -21,8 +26,34 @@ const validate = values => {
   return errors;
 };
 
-export default reduxForm({
-  form: "addList",
-  validate,
-  onSubmitSuccess: afterSubmit
-})(Form);
+const mapState = (state, ownProps) => {
+  const itemId = ownProps.match.params.id;
+
+  let item = {};
+
+  if (itemId && state.todoList.list.length > 0) {
+    item = state.todoList.list.filter(item => item.id === itemId)[0];
+    console.log(item);
+  }
+
+  return {
+    initialValues: item
+  };
+};
+
+const actions = {
+  createNewItemAction,
+  updateItemAction
+};
+
+export default connect(
+  mapState,
+  actions
+)(
+  reduxForm({
+    form: "addList",
+    validate,
+    onSubmitSuccess: afterSubmit,
+    enableReinitialize: true
+  })(Form)
+);
