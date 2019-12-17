@@ -18,7 +18,7 @@ const App = () => (
       <Route path="/menu" component={SimpleMenu} />
       <Route path="/todo" component={TodoList} />
       <Route path="/form" component={Form} />
-      <Route path="/form/:id" component={Form} />
+      <Route path="/formupdate/:id" component={Form} />
     </Switch>
   </Fragment>
 );

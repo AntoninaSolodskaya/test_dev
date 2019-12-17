@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import * as PropTypes from "prop-types";
 
 import { styles } from "./styles";
@@ -25,8 +25,9 @@ export const TodoItem = ({
 }) => {
   const classes = styles();
 
+  let history = useHistory();
+
   const handleClickItem = event => {
-    console.log(event, id);
     if (event === "Delete") {
       deleteItemAction(id);
     }
@@ -34,8 +35,7 @@ export const TodoItem = ({
       copyItemAction(id);
     }
     if (event === "Update") {
-      return <Redirect from="/todo" to={`/form/${id}`} />;
-      // to={`/manage/${id}`}
+      history.push(`/formupdate/${id}`);
     }
   };
 

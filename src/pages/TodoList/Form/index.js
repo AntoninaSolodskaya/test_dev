@@ -33,7 +33,8 @@ const mapState = (state, ownProps) => {
 
   if (itemId && state.todoList.list.length > 0) {
     item = state.todoList.list.filter(item => item.id === itemId)[0];
-    console.log(item);
+    console.log("item", item);
+    console.log("lenght", state.todoList.list);
   }
 
   return {
@@ -53,7 +54,7 @@ export default connect(
   reduxForm({
     form: "addList",
     validate,
-    onSubmitSuccess: afterSubmit,
+    // onSubmitSuccess: afterSubmit,
     enableReinitialize: true
   })(Form)
 );

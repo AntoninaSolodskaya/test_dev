@@ -1,5 +1,6 @@
 import React from "react";
 
+import { useHistory } from "react-router-dom";
 import { Field } from "redux-form";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -31,14 +32,15 @@ export const Form = ({
   initialValues
 }) => {
   const classes = useStyles();
-
+  console.log("initialValues", initialValues);
+  let history = useHistory();
   const submit = values => {
-    // console.log(initialValues)
     if (initialValues.id) {
       updateItemAction(values);
-      // history.goBack();
+      history.goBack();
     } else {
       createNewItemAction(values);
+      history.goBack();
     }
   };
 

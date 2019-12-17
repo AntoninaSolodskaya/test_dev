@@ -12,7 +12,8 @@ export const copyItemAction = createAction(
 
 export const updateItemAction = createAction(
   `${PREFIX}/UPDATE_TODO`,
-  itemId => itemId
+  itemId => itemId,
+  item => item
 );
 
 export const deleteItemAction = createAction(`${PREFIX}/DELETE_TODO`);
