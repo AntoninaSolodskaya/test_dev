@@ -7,9 +7,16 @@ import IconButton from "@material-ui/core/IconButton";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 
-export const SimpleMenu = ({ items, onClick, Icon, getLabel, getValue }) => {
+export const SimpleMenu = ({
+  type,
+  items,
+  onClick,
+  Icon,
+  getLabel,
+  getValue
+}) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
-
+  console.log(type);
   const handleOpen = useCallback(
     event => {
       setAnchorEl(event.currentTarget);
