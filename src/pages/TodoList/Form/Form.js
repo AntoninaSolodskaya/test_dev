@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import { useHistory } from "react-router-dom";
 import { Field } from "redux-form";
@@ -18,8 +18,15 @@ const useStyles = makeStyles({
   },
   btn: {
     display: "flex",
+    flexDirection: "column",
     justifyContent: "center",
-    marginTop: "20px"
+    alignContent: "center",
+    margin: "0 auto",
+    marginTop: "20px",
+    width: "50%"
+  },
+  color: {
+    color: "red"
   }
 });
 
@@ -33,22 +40,37 @@ export const Form = ({
 }) => {
   const classes = useStyles();
   console.log("initialValues", initialValues);
+
   let history = useHistory();
+
+  const [isOpen, toggleIsOpen] = React.useState(false);
+
+  const handleOpen = () => {
+    toggleIsOpen(true);
+  };
+
   const submit = values => {
     if (initialValues.id) {
       updateItemAction(values);
       history.goBack();
     } else {
       createNewItemAction(values);
-      history.goBack();
+      // history.goBack();
+      handleOpen();
     }
   };
 
   return (
     <Container maxWidth="sm">
       <form onSubmit={handleSubmit(submit)} className={classes.form}>
-        <Field name="title" component={CustomTextField} label="Title" />
-
+        <Field
+          name="title"
+          component={CustomTextField}
+          label="Title"
+          onChange={() => {
+            handleOpen();
+          }}
+        />
         <Field
           name="description"
           component={CustomTextField}
@@ -63,6 +85,7 @@ export const Form = ({
           >
             Submit
           </Button>
+          {isOpen ? <p className={classes.color}>I'm open!</p> : <p />}
         </div>
       </form>
     </Container>

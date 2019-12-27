@@ -40,7 +40,7 @@ const Main = ({ getLabel, getValue, onChange }) => {
   };
   sortByOrder();
 
-  return <Paper className={classes.root} onchange={sortByOrder} />;
+  return <Paper className={classes.root} onChange={sortByOrder} />;
 };
 
 export default Main;
